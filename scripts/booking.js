@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 /********* create variables *********/
 // useful variables might be: the cost per day, the number of days selected, and elements on the screen that will be clicked or will need to be modified. 
 // Do any of these variables need to be initialized when the page is loaded? 
@@ -25,7 +27,7 @@ const setDayCounter = (value) => {
 const setDayOpt = (value) => {
   day_opt = value;
   calc_cost();
-}
+};
 
 /********* colour change days of week *********/
 // when the day buttons are clicked, we will apply the "clicked" class to that element, and update any other relevant variables. Then, we can recalculate the total cost.
@@ -42,7 +44,7 @@ week_days.forEach( (day, i) => {
     }
     setDayCounter(week_selection.reduce((a,b)=>a+b));
   });
-})
+});
 
 /********* clear days *********/
 // when the clear-button is clicked, the "clicked" class is removed from all days, any other relevant variables are reset, and the calculated cost is set to 0.

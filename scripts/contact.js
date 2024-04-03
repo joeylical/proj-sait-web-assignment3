@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 // when the "submit-button" is clicked, the contents of the contact-page are replaced with a single <p> element that reads "Thank you for your message" in size 24 font.
 document.getElementById('submit-button').addEventListener('click', function() {
   let p = document.createElement('p');

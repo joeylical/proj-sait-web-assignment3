@@ -67,7 +67,8 @@ h2 {
     background-color: var(--mustardyellow);
     text-align: center;
     /* line-height: 3px; */
-    line-height: 30px;
+    /* It seems not correct if line-height is 3px; */
+    line-height: 48px;
     border: 1px solid black;
 }
 
@@ -151,7 +152,7 @@ footer {
 }
 
 .index p {
-    margin: 15px;
+    margin-bottom: 15px;
 }
 
 .index .fake-button {
@@ -159,10 +160,8 @@ footer {
 }
 
 .index > div:nth-child(2) {
-    /* margin: auto 150px;  */
-    margin: auto calc((950px - 2 * 250px - 150px) / 2);
-    /* gap: 150px; */
-    justify-content: space-between;
+    justify-content: center;
+    gap: 150px;
 }
 
 /************* bookings page *************/
