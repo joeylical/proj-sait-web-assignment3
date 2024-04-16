@@ -4,6 +4,7 @@
 document.getElementById('submit-button').addEventListener('click', function() {
   let p = document.createElement('p');
   p.style.fontSize = '24px';
+  p.style.textAlign = 'center';
   p.innerHTML = 'Thank you for your message';
   document.getElementById('contact-page').replaceChildren(p);
 });
