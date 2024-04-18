@@ -5,17 +5,16 @@
 // Do any of these variables need to be initialized when the page is loaded? 
 // When do they need to be reset or updated?
 
-const cost_per_day = 40;
 const week_days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
 
 let week_selection = new Array(5).fill(false);
 let dayCounter = 0;
-let day_opt = 1.0;
+let day_price = 35.0;
 
 const cost_elem = document.getElementById('calculated-cost');
 
 const calc_cost = () => {
-  let cost = dayCounter * day_opt * cost_per_day;
+  let cost = dayCounter * day_price;
   cost_elem.innerHTML = cost.toString();
 };
 
@@ -24,8 +23,8 @@ const setDayCounter = (value) => {
   calc_cost();
 };
 
-const setDayOpt = (value) => {
-  day_opt = value;
+const setDayPrice = (value) => {
+  day_price = value;
   calc_cost();
 };
 
@@ -36,13 +35,11 @@ const setDayOpt = (value) => {
 week_days.forEach( (day, i) => {
   let btn = document.getElementById(day);
   btn.addEventListener('click', () => {
-    week_selection[i] = !week_selection[i];
-    if (week_selection[i]) {
+    if (!week_selection[i]) {
       btn.classList.add('clicked');
-    } else {
-      btn.classList.remove('clicked');
+      week_selection[i] = true;
+      setDayCounter(week_selection.reduce((a,b)=>a+b));
     }
-    setDayCounter(week_selection.reduce((a,b)=>a+b));
   });
 });
 
@@ -50,7 +47,7 @@ week_days.forEach( (day, i) => {
 // when the clear-button is clicked, the "clicked" class is removed from all days, any other relevant variables are reset, and the calculated cost is set to 0.
 
 document.getElementById('clear-button').addEventListener('click', () => {
-    document.querySelectorAll('li.blue-hover').forEach(li => li.classList.remove('clicked'));
+    document.querySelectorAll('li.blue-hover.clicked').forEach(li => li.classList.remove('clicked'));
     week_selection.fill(false);
     setDayCounter(week_selection.reduce((a,b)=>a+b));
 });
@@ -61,14 +58,14 @@ document.getElementById('clear-button').addEventListener('click', () => {
 let half_btn = document.getElementById('half');
 let full_btn = document.getElementById('full');
 half_btn.addEventListener('click', () => {
-  setDayOpt(0.5);
+  setDayPrice(20);
   half_btn.classList.add('clicked');
   full_btn.classList.remove('clicked');
 });
 
 // when the full-day button is clicked, the daily rate is set back to $35, the clicked class is added to "full" and removed from "half", and the total cost is recalculated.
 full_btn.addEventListener('click', () => {
-  setDayOpt(1.0);
+  setDayPrice(35);
   half_btn.classList.remove('clicked');
   full_btn.classList.add('clicked');
 });
